@@ -33,4 +33,21 @@ public class CustomerTest {
       "您获得了3积分点", kang.statement());
   }
 
+  @Test
+  public void statement_html() {
+    Movie godzilla = new Movie("哥斯拉", Movie.REGULAR);
+    Movie kingKong = new Movie("金刚", Movie.REGULAR);
+    Movie GodzillaVsKong = new Movie("哥斯拉大战金刚", Movie.NEW_RELEASE);
+    Movie teletubbies = new Movie("天线宝宝", Movie.CHILDRENS);
+
+    Rental godzilla3DaysRented = new Rental(godzilla, 3);
+    Rental teletubbies3DaysRented = new Rental(teletubbies, 3);
+    kang.addRental(godzilla3DaysRented);
+    kang.addRental(teletubbies3DaysRented);
+    assertEquals("<h1>kang的租赁记录</h1>\n" +
+      "哥斯拉:3.5<br>\n" +
+      "天线宝宝:1.5<br>\n" +
+      "<p>您欠下的金额为5.0</p>\n" +
+      "<p>您获得了3积分点</p>", kang.statementHtml());
+  }
 }

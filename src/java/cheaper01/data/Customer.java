@@ -20,7 +20,7 @@ public class Customer {
   }
 
   /**
-   * 生成详情账单
+   * 生成详情账单(文字)
    *
    * @return 结果
    */
@@ -32,6 +32,23 @@ public class Customer {
     }
     result += "您欠下的金额为" + getTotalCharge() + "\n";
     result += "您获得了" + getFrequentRenterPoints() + "积分点";
+    return result;
+  }
+
+
+  /**
+   * 生成详情账单(html)
+   *
+   * @return 结果
+   */
+  public String statementHtml() {
+    String result = "<h1>" + getName() + "的租赁记录" + "</h1>\n";
+    for (Rental rental : rentals) {
+      // 显示当前租赁所需的金额
+      result += rental.getMovie().getTitle() + ":" + rental.getCharge() + "<br>\n";
+    }
+    result += "<p>您欠下的金额为" + getTotalCharge() + "</p>\n";
+    result += "<p>您获得了" + getFrequentRenterPoints() + "积分点</p>";
     return result;
   }
 
