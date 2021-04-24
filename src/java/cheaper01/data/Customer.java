@@ -29,7 +29,6 @@ public class Customer {
     int frequentRenterPoints = 0;
     String result = getName() + "的租赁记录\n";
     for (Rental rental : rentals) {
-      double thisAmount = rental.getCharge();
       // 添加一个积分点
       frequentRenterPoints++;
       // 客户租赁了新发布的电影且借期大于1, 添加多一个积分点
@@ -37,8 +36,8 @@ public class Customer {
         frequentRenterPoints++;
       }
       // 显示当前租赁的
-      result += "\t" + rental.getMovie().getTitle() + "\t" + thisAmount + "\n";
-      totalAmount += thisAmount;
+      result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
+      totalAmount += rental.getCharge();
     }
     result += "您欠下的金额为" + totalAmount + "\n";
     result += "您获得了" + frequentRenterPoints + "积分点";
