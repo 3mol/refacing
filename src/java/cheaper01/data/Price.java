@@ -1,7 +1,6 @@
 package cheaper01.data;
 
 abstract class Price {
-  abstract int getPriceCode();
 
   /**
    * 计算费用
@@ -28,11 +27,6 @@ abstract class Price {
 
 class NewReleasePrice extends Price {
   @Override
-  int getPriceCode() {
-    return Movie.NEW_RELEASE;
-  }
-
-  @Override
   public double getCharge(int daysRented) {
     return daysRented * 3;
   }
@@ -46,11 +40,6 @@ class NewReleasePrice extends Price {
 
 class RegularPrice extends Price {
   @Override
-  int getPriceCode() {
-    return Movie.REGULAR;
-  }
-
-  @Override
   public double getCharge(int daysRented) {
     double result = 2;
     if (daysRented > 2) {
@@ -61,11 +50,6 @@ class RegularPrice extends Price {
 }
 
 class ChildrenPrice extends Price {
-  @Override
-  int getPriceCode() {
-    return Movie.CHILDREN;
-  }
-
   @Override
   public double getCharge(int daysRented) {
     double result = 1.5;
