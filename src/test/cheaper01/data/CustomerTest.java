@@ -70,6 +70,6 @@ public class CustomerTest {
       "\t天线宝宝\t1.5\n" +
       "\t哥斯拉大战金刚\t9.0\n" +
       "您欠下的金额为14.0\n" +
-      "您获得了3积分点", kang.statement());
+      "您获得了4积分点", kang.statement());
   }
 }
