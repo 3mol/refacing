@@ -28,7 +28,7 @@ public class CustomerTest {
       "\t哥斯拉\t3.5\n" +
       "\t天线宝宝\t1.5\n" +
       "您欠下的金额为5.0\n" +
-      "您获得了3积分点", kang.statement());
+      "您获得了2积分点", kang.statement());
   }
 
   @Test
@@ -42,7 +42,7 @@ public class CustomerTest {
     assertEquals("kang的租赁记录\n" +
       "\t哥斯拉\t3.5\n" +
       "您欠下的金额为3.5\n" +
-      "您获得了2积分点", statement);
+      "您获得了1积分点", statement);
   }
 
   @Test
@@ -98,7 +98,7 @@ public class CustomerTest {
     assertEquals("kang的租赁记录\n" +
       "\t哥斯拉大战金刚\t9.0\n" +
       "您欠下的金额为9.0\n" +
-      "您获得了1积分点", statement);
+      "您获得了2积分点", statement);
   }
 
   @Test(expected = IllegalArgumentException.class)

@@ -53,7 +53,7 @@ public class Customer {
       // 添加一个积分点
       frequentRenterPoints++;
       // 客户租赁了新发布的电影且借期大于1, 添加多一个积分点
-      if (rental.getMovie().getPriceCode() == Movie.REGULAR && rental.getDaysRented() > 1) {
+      if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1) {
         frequentRenterPoints++;
       }
       // 显示当前租赁的
