@@ -55,7 +55,7 @@ public class Movie {
       case NEW_RELEASE:
         price = new NewReleasePrice();
         break;
-      case CHILDRENS:
+      case CHILDREN:
         price = new ChildrenPrice();
         break;
       default:
