@@ -88,6 +88,20 @@ public class CustomerTest {
   }
 
   @Test
+  public void statement_newReleaseMovie1DaysRental() {
+    Movie GodzillaVsKong = new Movie("哥斯拉大战金刚", Movie.NEW_RELEASE);
+
+    Rental GodzillaVsKong3DaysRented = new Rental(GodzillaVsKong, 1);
+    kang.addRental(GodzillaVsKong3DaysRented);
+    String statement = kang.statement();
+    System.out.println(statement);
+    assertEquals("kang的租赁记录\n" +
+      "\t哥斯拉大战金刚\t3.0\n" +
+      "您欠下的金额为3.0\n" +
+      "您获得了1积分点", statement);
+  }
+
+  @Test
   public void statement_newReleaseMovie3DaysRental() {
     Movie GodzillaVsKong = new Movie("哥斯拉大战金刚", Movie.NEW_RELEASE);
 
@@ -109,6 +123,7 @@ public class CustomerTest {
     kang.addRental(teletubbies3DaysRented);
     kang.statement();
   }
+
   @Test
   public void statement_html() {
     Movie godzilla = new Movie("哥斯拉", Movie.REGULAR);
