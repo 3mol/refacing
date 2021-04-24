@@ -26,40 +26,19 @@ public class Rental {
   /**
    * 计算费用
    * 该函数都是与rental相关的, Customer相关性不强
+   * 更新1: switch 的数据是与Movie相关, 应该移入到Movie
    *
    * @return 金额
    */
   public double getCharge() {
-    double result = 0;
-    // 确定每一个租赁的金额
-    switch (this.getMovie().getPriceCode()) {
-      case Movie.REGULAR:
-        result += 2;
-        if (this.getDaysRented() > 2) {
-          result += (this.getDaysRented() - 2) * 1.5;
-        }
-        break;
-      case Movie.NEW_RELEASE:
-        result += this.getDaysRented() * 3;
-        break;
-      case Movie.CHILDRENS:
-        result += 1.5;
-        if (this.getDaysRented() > 3) {
-          result += (this.getDaysRented() - 3) * 1.5;
-        }
-        break;
-      default:
-        break;
-
-    }
-    return result;
+    return movie.getCharge(daysRented);
   }
 
+  /**
+   * 更新1: 移动到movie相关的类中, 因为if中含有getMovie()#getPriceCode,导致该类的内聚度低
+   * @return
+   */
   public int getFrequentRenterPoints() {
-    // 客户租赁了新发布的电影且借期大于1, 添加多一个积分点
-    if (getMovie().getPriceCode() == Movie.REGULAR && getDaysRented() > 1) {
-      return 2;
-    }
-    return 1;
+    return movie.getFrequentRenterPoints(daysRented);
   }
 }
