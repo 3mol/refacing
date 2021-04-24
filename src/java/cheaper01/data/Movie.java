@@ -11,7 +11,7 @@ public class Movie {
   /**
    * 类型 儿童电影
    */
-  public static final int CHILDRENS = 2;
+  public static final int CHILDREN = 2;
   /**
    * 类型 新发布
    */

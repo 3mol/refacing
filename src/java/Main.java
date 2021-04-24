@@ -10,7 +10,7 @@ public class Main {
     Movie godzilla = new Movie("哥斯拉", Movie.REGULAR);
     Movie kingKong = new Movie("金刚", Movie.REGULAR);
     Movie GodzillaVsKong = new Movie("哥斯拉大战金刚", Movie.NEW_RELEASE);
-    Movie teletubbies = new Movie("天线宝宝", Movie.CHILDRENS);
+    Movie teletubbies = new Movie("天线宝宝", Movie.CHILDREN);
 
 
     Rental godzilla3DaysRented = new Rental(godzilla, 3);
