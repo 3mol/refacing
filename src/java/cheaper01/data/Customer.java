@@ -25,19 +25,36 @@ public class Customer {
    * @return 结果
    */
   public String statement() {
-    double totalAmount = 0;
-    int frequentRenterPoints = 0;
     String result = getName() + "的租赁记录\n";
+    for (Rental rental : rentals) {
+      // 显示当前租赁所需的金额
+      result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
+    }
+    result += "您欠下的金额为" + getTotalCharge() + "\n";
+    result += "您获得了" + getFrequentRenterPoints() + "积分点";
+    return result;
+  }
+
+  private int getFrequentRenterPoints() {
+    int frequentRenterPoints = 0;
     for (Rental rental : rentals) {
       // 添加一个积分点
       frequentRenterPoints += rental.getFrequentRenterPoints();
-      // 显示当前租赁的
-      result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
+    }
+    return frequentRenterPoints;
+  }
+
+  /**
+   * 以查询替换临时变量
+   *
+   * @return 总金额
+   */
+  private double getTotalCharge() {
+    double totalAmount = 0;
+    for (Rental rental : rentals) {
       totalAmount += rental.getCharge();
     }
-    result += "您欠下的金额为" + totalAmount + "\n";
-    result += "您获得了" + frequentRenterPoints + "积分点";
-    return result;
+    return totalAmount;
   }
 
 }
