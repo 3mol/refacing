@@ -29,27 +29,7 @@ public class Customer {
     int frequentRenterPoints = 0;
     String result = getName() + "的租赁记录\n";
     for (Rental rental : rentals) {
-      double thisAmount = 0;
-      // 确定每一个租赁的金额
-      switch (rental.getMovie().getPriceCode()) {
-        case Movie.REGULAR:
-          thisAmount += 2;
-          if (rental.getDaysRented() > 2) {
-            thisAmount += (rental.getDaysRented() - 2) * 1.5;
-          }
-          break;
-        case Movie.NEW_RELEASE:
-          thisAmount += rental.getDaysRented() * 3;
-          break;
-        case Movie.CHILDRENS:
-          thisAmount += 1.5;
-          if (rental.getDaysRented() > 3) {
-            thisAmount += (rental.getDaysRented() - 3) * 1.5;
-          }
-          break;
-        default:
-          break;
-      }
+      double thisAmount = amountForRental(rental);
       // 添加一个积分点
       frequentRenterPoints++;
       // 客户租赁了新发布的电影且借期大于1, 添加多一个积分点
@@ -62,6 +42,32 @@ public class Customer {
     }
     result += "您欠下的金额为" + totalAmount + "\n";
     result += "您获得了" + frequentRenterPoints + "积分点";
+    return result;
+  }
+
+  private double amountForRental(Rental rental) {
+    double result = 0;
+    // 确定每一个租赁的金额
+    switch (rental.getMovie().getPriceCode()) {
+      case Movie.REGULAR:
+        result += 2;
+        if (rental.getDaysRented() > 2) {
+          result += (rental.getDaysRented() - 2) * 1.5;
+        }
+        break;
+      case Movie.NEW_RELEASE:
+        result += rental.getDaysRented() * 3;
+        break;
+      case Movie.CHILDRENS:
+        result += 1.5;
+        if (rental.getDaysRented() > 3) {
+          result += (rental.getDaysRented() - 3) * 1.5;
+        }
+        break;
+      default:
+        break;
+
+    }
     return result;
   }
 }
