@@ -30,11 +30,7 @@ public class Customer {
     String result = getName() + "的租赁记录\n";
     for (Rental rental : rentals) {
       // 添加一个积分点
-      frequentRenterPoints++;
-      // 客户租赁了新发布的电影且借期大于1, 添加多一个积分点
-      if (rental.getMovie().getPriceCode() == Movie.REGULAR && rental.getDaysRented() > 1) {
-        frequentRenterPoints++;
-      }
+      frequentRenterPoints += rental.getFrequentRenterPoints();
       // 显示当前租赁的
       result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
       totalAmount += rental.getCharge();

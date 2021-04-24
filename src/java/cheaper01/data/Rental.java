@@ -54,4 +54,12 @@ public class Rental {
     }
     return result;
   }
+
+  public int getFrequentRenterPoints() {
+    // 客户租赁了新发布的电影且借期大于1, 添加多一个积分点
+    if (getMovie().getPriceCode() == Movie.REGULAR && getDaysRented() > 1) {
+      return 2;
+    }
+    return 1;
+  }
 }
